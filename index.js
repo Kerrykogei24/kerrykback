@@ -4,6 +4,7 @@ const express = require('express');
 const nodeMail = require('nodemailer');
 const path = require('path');
 const app = express()
+let alert = require('alert');
 
 app.set('view engine', 'html');
 
@@ -54,12 +55,12 @@ app.post("/", async(req, res, next) => {
     const { yourname, youremail, yoursubject, yourmessage } = req.body;
     try {
         await mainMail(yourname, youremail, yoursubject, yourmessage);
-        res.send("Message was successfuly Sent");
-        // res.sendFile(__dirname + '/success.html');
+        alert("Message was successfuly Sent");
+        // res.sendFile(__dirname + 'http://localhost:5500/success.html');
     } catch (error) {
         console.log(error);
-        // res.sendFile(__dirname + '/reject.html');
-        res.send("Message Could not be Sent");
+        // res.sendFile(__dirname + 'http://localhost:5500/success.html');
+        alert("Message was successfuly Sent");
     }
 });
 
