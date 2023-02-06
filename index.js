@@ -55,14 +55,17 @@ app.post("/", async(req, res, next) => {
     const { yourname, youremail, yoursubject, yourmessage } = req.body;
     try {
         await mainMail(yourname, youremail, yoursubject, yourmessage);
-        res.send("Message was successfuly Sent");
-        // res.sendFile(__dirname + 'http://localhost:5500/success.html');
+
+        // res.send("Message was successfuly Sent");
+        res.redirect('https://master--visionary-toffee-b493f1.netlify.app/success.html');
     } catch (error) {
         console.log(error);
-        // res.sendFile(__dirname + 'http://localhost:5500/success.html');
-        res.send("Message Could not be Sent");
+        res.redirect('https://master--visionary-toffee-b493f1.netlify.app/reject.html');
+        // res.send("Message Could not be Sent");
     }
 });
+
+
 
 
 
@@ -72,4 +75,4 @@ app.listen(3000, () => {
 })
 
 // Export the Express API
-module.exports = app;
+module.exports = app
